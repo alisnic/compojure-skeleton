@@ -1,15 +1,14 @@
-(ns shouter.core
+(ns app.core
   (:use [compojure.core :only (defroutes)]
         [ring.adapter.jetty :as ring])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
-            [shouter.controllers.shouts :as shouts]
-            [shouter.views.layout :as layout]
-            [shouter.models.migration :as schema])
+            [app.controllers.root :as root]
+            [app.views.layout :as layout])
   (:gen-class))
 
 (defroutes routes
-  shouts/routes
+  root/routes
   (route/resources "/")
   (route/not-found (layout/four-oh-four)))
 
@@ -20,7 +19,6 @@
                           :join? false}))
 
 (defn -main []
-  (schema/migrate)
   (let [port (Integer/parseInt (or (System/getenv "PORT") "8080"))]
     (start port)))
  
