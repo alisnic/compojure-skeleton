@@ -1,7 +1,2 @@
-# shouter
-
-## License
-
-Copyright Aaron Bedra
-
-Distributed under the Eclipse Public License, the same as Clojure.
+# Empty (heroke-ready) Compojure app
+based on Heroku "shouter" example
